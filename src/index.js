@@ -1,17 +1,22 @@
+import "./styles.css";
+import { showDailyWeather } from "./view";
+
 const API_KEY = "2PFCUBU6CTMPS3MEZ6DGZDDRK";
-const targetLocation = "london";
 
-const getWeatherBtn = document.querySelector("#get-weather-btn");
+const weatherBtn = document.querySelector("#weather-btn");
 
 
-// for reference:
+// for reference of json data:
 // https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/london?key=2PFCUBU6CTMPS3MEZ6DGZDDRK
 
 
-getWeatherBtn.addEventListener("click", () => getWeatherForLoc(targetLocation));
+weatherBtn.addEventListener("click", getWeatherForLoc);
 
-async function getWeatherForLoc(location) {
+async function getWeatherForLoc() {
     try {
+        // get target location from input
+        const location = document.querySelector("#weather-input").value;
+
         // response is a promise
         const response = await fetch("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/" + location + "?key=" + API_KEY);
         // data waits for/obtains json data from the promise
@@ -20,19 +25,21 @@ async function getWeatherForLoc(location) {
         // data retrieval test
         const preciseLoc = data.resolvedAddress;
         const description = data.description;
-        // console.log(data);
+        console.log(data);
         console.log("The weather for " + preciseLoc + " this week is: " + description);
 
-        // next 2 weeks data (untested)
-        const next2Weeks = JSON.parse(data.days);
+        // next 2 weeks data
+        // const next2Weeks = JSON.parse(data.days);
+        const next2Weeks = data.days;
         console.log(next2Weeks);
+        showDailyWeather(next2Weeks);
 
-        // current day hourly data (untested, unsure if this works)
-        const todayHourly = JSON.parse(data.days.data("0"));
-        console.log(todayHourly);
+        // // current day hourly data
+        // const todayHourly = data.days["0"].hours;
+        // console.log(todayHourly);
         
     }
     catch(err) {
-        console.log("Error: " + err);
+        console.log("getWeatherForLoc() failed, error: " + err);
     }
 }

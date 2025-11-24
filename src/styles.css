@@ -1,1 +1,30 @@
+* {
+    outline: 1px solid red;
+    margin: 0;
+}
 
+body {
+    margin: 0px;
+}
+
+#weather-form {
+    margin: 20px;
+}
+
+#weather-label {
+}
+
+#weather-input {
+    width: 500px;
+    /* box-sizing: border-box; */
+}
+
+#weather-btn {
+    /* box-sizing: border-box; */
+}
+
+
+
+.day {
+    margin: 10px;
+}
