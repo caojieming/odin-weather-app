@@ -13,17 +13,19 @@
 
     <body>
 
+        <p id="title">Weather App</p>
+
         <form id="weather-form" onsubmit="event.preventDefault();">
             <label id="weather-label">
-                <span>Label (temp)</span>
-                <input id="weather-input" name="weather-input" type="text" required placeholder="input address, partial address, latitude/longitude, major city name, or ZIP code">
+                <p>Input address, partial address, "latitude,longitude", major city name, or ZIP code.</p>
+                <input id="weather-input" name="weather-input" type="text" required placeholder="Type here">
             </label>
 
             <button id="weather-btn">Get Weather</button>
         </form>
 
         <div id="daily-weather">
-            
+
         </div>
         
     </body>

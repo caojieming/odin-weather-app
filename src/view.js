@@ -7,8 +7,6 @@ export function showDailyWeather(data) {
     // loop through all days and add them
     // day is just the key, not key + value
     for(let day in data) {
-        console.log(day);
-
         const dayDiv = document.createElement("div");
         dayDiv.setAttribute("id", `day${day}`);
         dayDiv.classList.add("day");

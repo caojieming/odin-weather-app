@@ -9,6 +9,12 @@ const weatherBtn = document.querySelector("#weather-btn");
 // for reference of json data:
 // https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/london?key=2PFCUBU6CTMPS3MEZ6DGZDDRK
 
+/* 
+Todo:
+- make daily styling a bit better (solid backgrounds for easier reading)
+- add weather icons?
+*/
+
 
 weatherBtn.addEventListener("click", getWeatherForLoc);
 
