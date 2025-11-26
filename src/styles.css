@@ -12,25 +12,35 @@ body {
 
     background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
 }
+body > * {
+    margin-bottom: 40px;
+}
 
 
 #title {
     margin-top: 40px;
+    padding: 10px;
+
     font-size: 40px;
     font-weight: bold;
+
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
 
 #weather-form {
-    margin: 40px;
+    padding: 20px;
+
     display: flex;
     flex-direction: column;
+
+    background-color: rgba(255, 255, 255, 0.3);
 }
 #weather-form :not(:last-child) {
     margin-bottom: 10px;
 }
 #weather-label {
-    
+    text-align: center;
 }
 #weather-input {
     box-sizing: border-box;
@@ -43,6 +53,16 @@ body {
 }
 
 
+#msg {
+    display: none;
+    width: 500px;
+    padding: 10px;
+    text-wrap: wrap;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+
 #daily-weather {
     display: flex;
     width: 90%;
@@ -52,6 +72,8 @@ body {
 }
 .day {
     margin: 10px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.3);
 }
 .day:first-child {
     margin-left: 20px;
