@@ -1,5 +1,5 @@
 * {
-    outline: 1px solid red;
+    /* outline: 1px solid red; */
     margin: 0;
 }
 
@@ -25,6 +25,7 @@ body > * {
     font-weight: bold;
 
     background-color: rgba(255, 255, 255, 0.3);
+    outline: 1px solid black;
 }
 
 
@@ -35,6 +36,7 @@ body > * {
     flex-direction: column;
 
     background-color: rgba(255, 255, 255, 0.3);
+    outline: 1px solid black;
 }
 #weather-form :not(:last-child) {
     margin-bottom: 10px;
@@ -60,24 +62,45 @@ body > * {
     text-wrap: wrap;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.3);
+    outline: 1px solid black;
 }
 
 
-#daily-weather {
+#daily-title, #hourly-title {
+    display: none;
+    padding: 8px;
+    font-size: 30px;
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.3);
+    outline: 1px solid black;
+}
+
+
+#daily-weather, #hourly-weather {
     display: flex;
     width: 90%;
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap
 }
-.day {
+.day, .hour {
     margin: 10px;
     padding: 10px;
     background-color: rgba(255, 255, 255, 0.3);
+    outline: 1px solid black;
 }
-.day:first-child {
+.day:first-child, .hour:first-child {
     margin-left: 20px;
 }
-.day:last-child {
+.day:last-child, .hour:last-child {
     margin-right: 20px;
+}
+.day > *:not(:last-child), .hour > *:not(:last-child) {
+    margin-bottom: 4px;
+}
+.day-icon, .hour-icon {
+    display: block;
+    width: 100px;
+    height: 100px;
+    margin: auto;
 }

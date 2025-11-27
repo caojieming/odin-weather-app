@@ -1,5 +1,5 @@
 import "./styles.css";
-import { showDailyWeather } from "./view";
+import { showDailyWeather, showHourlyWeather } from "./view";
 
 const API_KEY = "2PFCUBU6CTMPS3MEZ6DGZDDRK";
 
@@ -10,17 +10,22 @@ const weatherBtn = document.querySelector("#weather-btn");
 // https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/london?key=2PFCUBU6CTMPS3MEZ6DGZDDRK
 
 /* 
-Todo:
-- add weather icons?
+Possible todos:
+- once the sandworm malware issue has passed, import date-fns to convert the ugly dates/times into something nicer
+- clicking specific days brings up the hourly info of that day
 */
 
 
 weatherBtn.addEventListener("click", getWeatherForLoc);
 
 async function getWeatherForLoc() {
-    // unhide message/comment section
+    // unhide message and daily/hourly title sections
     const msg = document.querySelector("#msg");
     msg.style.display = "block";
+    const dailyTitle = document.querySelector("#daily-title");
+    dailyTitle.style.display = "block";
+    const hourlyTitle = document.querySelector("#hourly-title");
+    hourlyTitle.style.display = "block";
 
     // get target location from input
     const location = document.querySelector("#weather-input").value;
@@ -39,7 +44,7 @@ async function getWeatherForLoc() {
         errCode = response.status;
         // data waits for/obtains json data from the promise
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
 
         // general data retrieval details
         const preciseLoc = data.resolvedAddress;
@@ -51,9 +56,9 @@ async function getWeatherForLoc() {
         const next2Weeks = data.days;
         showDailyWeather(next2Weeks);
 
-        // // current day hourly data
-        // const todayHourly = data.days["0"].hours;
-        // console.log(todayHourly);
+        // current day hourly data
+        const todayHourly = data.days["0"].hours;
+        showHourlyWeather(todayHourly);
     }
     catch(err) {
         console.log("getWeatherForLoc() failed, error: " + err);
