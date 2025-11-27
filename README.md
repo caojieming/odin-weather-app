@@ -1,28 +1,10 @@
-# npm-webpack-template
-Repository Template for npm Webpack stuff.
+# Weather App
+A simple webapp that uses Visual Crossing Weather API to get and present weather data. It gets weather data from the location you input, accepting location formats like: address, partial address, longitude/latitude, major location/city names, and ZIP codes.
 
-Run `npm install` to install (or update) all dev dependencies.
-
-## npm scripts included:
-`npm run build`<br>
-The equivalent of `npx webpack --config webpack.prod.js`.<br>
-Bundles everything in `src` into `dist`.
-
-`npm run dev`<br>
-The equivalent of `npx webpack serve --config webpack.dev.js`.<br>
-Opens a webpack server for viewing changes in real time without needing to build.<br>
-Server link: http://localhost:8080/
-
-## To remove image file loader module:
-This template includes the module "html-loader" for loading image files.
-
-If you don't use image files, you can remove this module with:<br>
-`npm uninstall html-loader`<br>
-or<br>
-`npm uninstall --save html-loader`
-
-This command tells npm to remove the package from your `package.json`, `npm-shrinkwrap.json`, and `package-lock.json` files.<br>
-The `--save` is optional in most cases (it's the default option).
+## npm (dev) commands
+`npm install` to install (or update) all dev dependencies.<br>
+`npm run dev` to open a webpack server for viewing changes in real time without needing to build (server link: http://localhost:8080/).<br>
+`npm run build` to bundle everything in `src` into `dist`.
 
 ## List of packages used:
 - webpack
