@@ -16,3 +16,4 @@ A simple webapp that uses Visual Crossing Weather API to get and present weather
 - webpack-dev-server
 - eslint
 - prettier
+- date-fns

@@ -1,3 +1,5 @@
+import { parse, format } from 'date-fns';
+
 export async function showDailyWeather(data) {
     const dailyWeatherDiv = document.querySelector("#daily-weather");
     
@@ -13,7 +15,8 @@ export async function showDailyWeather(data) {
         dailyWeatherDiv.appendChild(dayDiv);
 
         const dateTime = document.createElement("p");
-        dateTime.textContent = "Date: " + data[day].datetime;
+        const rawDate = data[day].datetime;
+        dateTime.textContent = "Date: " + convertDayFormat(rawDate);
         dayDiv.appendChild(dateTime);
 
         const tempMax = document.createElement("p");
@@ -53,7 +56,8 @@ export async function showHourlyWeather(data) {
         hourlyWeatherDiv.appendChild(hourDiv);
 
         const dateTime = document.createElement("p");
-        dateTime.textContent = "Time: " + data[hour].datetime;
+        const rawTime = data[hour].datetime;
+        dateTime.textContent = "Time: " + convertHourFormat(rawTime);
         hourDiv.appendChild(dateTime);
 
         const temp = document.createElement("p");
@@ -72,4 +76,32 @@ export async function showHourlyWeather(data) {
         iconImg.src = iconUrl;
         hourDiv.appendChild(iconImg);
     }
+}
+
+
+// helper functions using date-fns to convert ugly raw data dates into something nicer
+function convertDayFormat(inDay) {
+    // inDay looks something like: 2025-12-02
+    const inFormat = "yyyy-MM-dd";
+    const outFormat = "MMMM do, yyyy";
+
+    // 3rd arg is used as a reference date
+    const inDate = parse(inDay, inFormat, new Date());
+
+    const outDate = format(inDate, outFormat);
+
+    return outDate;
+}
+
+function convertHourFormat(inHour) {
+    // inHour looks something like: 00:00:00, 05:00:00, or 19:00:00
+    const inFormat = "HH:mm:ss";
+    const outFormat = "h:mm a";
+
+    // 3rd arg is used as a reference date
+    const inTime = parse(inHour, inFormat, new Date());
+
+    const outTime = format(inTime, outFormat);
+
+    return outTime;
 }

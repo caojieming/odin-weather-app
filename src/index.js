@@ -11,7 +11,6 @@ const weatherBtn = document.querySelector("#weather-btn");
 
 /* 
 Possible todos:
-- once the sandworm malware issue has passed, import date-fns to convert the ugly dates/times into something nicer
 - clicking specific days brings up the hourly info of that day
 */
 
